@@ -1,7 +1,7 @@
 # 研发手册/大纲
 
 ## 技术方案整体概述 
-- 目前采用MVVM web 架构，原型技术栈使用.net 5 + React + EF 
+- 目前采用MVVM web 架构，原型技术栈主要使用.net 5 + React + EF 
 - 首先先实现用户常用场景下的一些操作做出技术点例子，如用户注册，登陆，文件上传，下载，看教学视频，能对自己的信息进行管理等，然后在进一步做详细规划
 
 ## 技术点研究
@@ -42,30 +42,32 @@
         - webpack 设置
 
 ## WebApp原型（结合所有技术点做出的原型站点）
-    - Todo 
+- Todo 
 
 ## 目录结构
-    ```
-    .
-    ├── LICENSE
-    ├── Notes
-    │   └── DataFormat.md
-    ├── PrototypeWebApp
-    │   ├── README.md
-    │   └── src
-    ├── README.md
-    ├── TecPoints
-    │   ├── Backend
-    │   │   ├── Log
-    │   │   │   ├── CodeSample
-    │   │   │   └── log.md
-    │   │   └── Middleware
-    │   │       ├── CodeSample
-    │   │       └── Middleware.md
-    │   └── Frontend
-    │       └── Form
-    │           ├── CodeSample
-    │           └── form.md
-    └── tree.md
-    ```
+```
+.
+├── LICENSE
+├── Notes
+│   └── DataFormat.md
+├── PrototypeWebApp
+│   ├── README.md
+│   └── src
+├── README.md
+└── TecPoints
+    ├── Backend
+    │   ├── Log
+    │   │   ├── CodeSample
+    │   │   └── log.md
+    │   └── Middleware
+    │       ├── CodeSample
+    │       └── Middleware.md
+    ├── Frontend
+    │   └── Form
+    │       ├── CodeSample
+    │       └── form.md
+    └── Others
+        ├── NodeJS
+        └── Python
+```
 
