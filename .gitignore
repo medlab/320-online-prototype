@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# backend
+/.vs/*
+
+# c# compile files
+/bin/*
+
+# c# compile files
+/obj/*
