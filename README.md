@@ -47,7 +47,7 @@
 
 ## 参考资料
 - [CLR via C#](Resources/C#/doc/Microsoft.Press.CLR.Via.C.Sharp.4th.Edition.pdf)
-- [React video course in Channel 9](Resources/video/React.md)
+- [React video course in Channel 9](Resources/video/react.md)
 
 ## 目录结构
 ```
