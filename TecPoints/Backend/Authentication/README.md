@@ -10,8 +10,8 @@ ASP.NET Core关于认证分为两部分
     - 在未经身份验证的用户试图访问受限资源时作出响应。
 2. 怎么验证？
 - 身份验证方案(scheme)由`Startup.ConfigureService`中注册的身份验证服务指定,直白的说用户提供了用户名和密码，然后你是让他愉快进来了，接下来你要和他之间建立一个通信证明，在有效期内用户拿着这个证明，就不需要再做一次登陆操作，这些方案比如是围绕JWT，Cookie等来做文章。
-- 现在微软直接帮我们build-in了一些认证的模版和逻辑，利用了[Razor类库]（https://docs.microsoft.com/en-us/aspnet/core/razor-pages/ui-class?view=aspnetcore-5.0&tabs=visual-studio）可以参考visual studio关于带认证的webapp模版。
-**如果我们自己去自定义认证，则需要[重写那些默认的模块](https://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-5.0&tabs=visual-studio#create-full-identity-ui-source)** 
+- 现在微软直接帮我们build-in了一些认证的模版和逻辑，利用了[Razor类库](https://docs.microsoft.com/en-us/aspnet/core/razor-pages/ui-class?view=aspnetcore-5.0&tabs=visual-studio)可以参考visual studio关于带认证的webapp模版。
+**如果我们自己去自定义认证，则需要[重写那些默认的模块](shttps://docs.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-5.0&tabs=visual-studio#create-full-identity-ui-source)**
 ## DEMO
 1. 这次的DEMO要演示的是
     - 用户可以默认进主页，但是他要看一些有权限(Autherization -> Authorication)的板块他需要登陆(建立他的ClaimsPrincipal)，如果没有注册过，那么他需要注册
@@ -62,3 +62,7 @@ ASP.NET Core关于认证分为两部分
                 </div>
         ```
     6. 在Privacy.cshtml.cs中简单添加attrubute `[Authorize]`, 要求进入privacy页面需要认证.
+
+
+    ## 参考：
+    [MSDN-ASP.NET Authencation](https://docs.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-5.0)
