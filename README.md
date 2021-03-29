@@ -7,20 +7,30 @@
 ## 技术点研究
 1. 后端例子
     - 功能相关
-        - log 用法
-        - 认证原理
-        - 数据库ORM （定义，初始化）
-        - 数据库迁移
+        - 日志系统
+            - 日志规范，等级，分类
+            - 内置日志，自定义日志，第三方日志
+        - 认证授权
+            - 认证
+            - 授权
+        - 数据库ORM(todo)
+            - 数据模型定义，初始化,创建
+            - 数据库Migration
+        - WebAPI (todo)
+            - 文件上传下载（Demo使用本地File System）
+            - 其他数据传输
+        - 中间件
         - 服务器路由简单演示
-        - WebAPI
-        - 文件的IO操作（上传和下载）
-    - 工程相关
-        - 编译，测试（命令行）
-        - 测试报表输出
-        - 单元测试
-        - 半集成测试
-        - 打包发布
-        - 部署
+    - 工程相关 (todo)
+        - 编译
+        - 打包发布，部署
+            - 本地
+            - docker
+        - 测试
+            - 单元测试
+            - 半集成测试
+            - 测试报告输出
+
 2. 前端例子
     - 功能相关
         - 表单
@@ -56,8 +66,7 @@
 ├── Notes
 │   └── DataFormat.md
 ├── PrototypeWebApp
-│   ├── README.md
-│   └── src
+│   └── README.md
 ├── README.md
 ├── Resources
 │   ├── doc
@@ -66,22 +75,30 @@
 │       └── react.md
 └── TecPoints
     ├── Backend
+    │   ├── Authentication
+    │   │   ├── Authen
+    │   │   └── README.md
     │   ├── CustomRouting
     │   │   ├── 01_Initial
     │   │   ├── 02_Finally
     │   │   └── CustomRouting.md
-    │   ├── Log
-    │   │   ├── CodeSample
-    │   │   └── log.md
+    │   ├── DBMigration
+    │   │   ├── Finally
+    │   │   └── Initial
+    │   ├── Logging
+    │   │   ├── Finally
+    │   │   ├── Initial
+    │   │   └── README.md
     │   └── Middleware
-    │       ├── CodeSample
-    │       └── Middleware.md
-    ├── Frontend
-    │   └── Form
-    │       ├── CodeSample
-    │       └── form.md
-    └── Others
-        ├── NodeJS
-        └── Python
+    │       ├── Finally
+    │       ├── Initial
+    │       ├── README.md
+    │       ├── middleware-pipeline.svg
+    │       ├── mvc-endpoint.svg
+    │       ├── request-delegate-pipeline.png
+    │       └── test2
+    └── Frontend
+        └── Form
+            └── form.md
 ```
 
