@@ -17,7 +17,9 @@
             - 数据模型定义，初始化,创建
             - 数据库Migration
         - WebAPI (todo)
-            - 文件上传下载（Demo使用本地File System）
+            - 大文件包
+                - 上传
+                - 下载
             - 其他数据传输
         - 中间件
         - 服务器路由简单演示
@@ -37,27 +39,27 @@
 	    - 上传
 	    - 下载
         - 状态管理
-		- 用户登陆
+		- 用户登陆 TODO
 		- 表格控件
 		- 界面组件库
 		- 路由
-		- css 布局，设计实现，工程化
-		- 过渡和动画
+		- css 布局，设计实现 TODO
+        - 工程化 TODO
+		- 过渡和动画 TODO
     - 工程相关
         - 编译部署
         - 单元测试
         - Mock数据
-        - E2E测试
+        - E2E测试 TODO
         - 代码规范
-        - babel 
+        - babel  TODO
         - webpack 设置
 
 ## WebApp原型（结合所有技术点做出的原型站点）
 - Todo 
 
 ## 参考资料
-- [CLR via C#](Resources/doc/Microsoft.Press.CLR.Via.C.Sharp.4th.Edition.pdf)
-- [React video course in Channel 9](https://channel9.msdn.com/Search?term=react&lang-en=true)
+- [ASP.NET Core Docs](https://docs.microsoft.com/zh-cn/aspnet/core/getting-started/?view=aspnetcore-5.0&tabs=macos)
 
 ## 目录结构
 ```
