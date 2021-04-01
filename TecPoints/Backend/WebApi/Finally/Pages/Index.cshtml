@@ -1,0 +1,51 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Upload Files Sample";
+}
+<h1>Files List and Download</h1>
+@if (Model.PhysicalFiles.Count() == 0)
+{
+    <p>
+    No files are available. Visit one of the file upload scenario pages to upload one or more files.
+</p>
+}
+else
+{
+    <table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                Name / Path
+            </th>
+            <th>
+                Size (bytes)
+            </th>
+            <th>
+                <code>PhysicalFileResult</code> from storage
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model.PhysicalFiles)
+            {
+                <tr>
+                    <td>
+                        <a asp-page="./DeletePhysicalFile" asp-route-fileName="@file.Name">Delete</a>
+                    </td>
+                    <td>
+                        <b>@file.Name</b><br>
+                        @file.PhysicalPath
+                    </td>
+                    <td class="text-center">
+                        @file.Length.ToString("N0")
+                    </td>
+                    <td class="text-center">
+                        <a asp-page-handler="DownloadPhysical" asp-route-fileName="@file.Name">Download</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

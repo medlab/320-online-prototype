@@ -24,12 +24,12 @@ namespace TestAuthWebapp.Areas.Identity
                     options => options.SignIn.RequireConfirmedAccount = true)
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<TestAuthWebappIdentityDbContext>();
-                services.AddAuthorization(options =>
-                {
-                    options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                        .RequireAuthenticatedUser()
-                        .Build();
-                });
+                // services.AddAuthorization(options =>
+                // {
+                //     options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                //         .RequireAuthenticatedUser()
+                //         .Build();
+                // });
             });
         }
     }

@@ -9,7 +9,6 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
 using System.IO;
-
 namespace Finally
 {
     public class Program
@@ -24,7 +23,6 @@ namespace Finally
             .Enrich.FromLogContext()
             .WriteTo.File(Path.Combine("log", ".txt"), rollingInterval: RollingInterval.Minute)
             .CreateLogger();
-
             try
             {
                 Log.Information("Starting DEMO web host");
@@ -41,7 +39,6 @@ namespace Finally
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
@@ -51,6 +48,7 @@ namespace Finally
                     logging.ClearProviders();
                     logging.AddConsole();
                     logging.AddDebug();
-                });
+                })
+                 .UseSerilog();
     }
 }
