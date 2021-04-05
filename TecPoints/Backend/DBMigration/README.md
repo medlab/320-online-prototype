@@ -5,7 +5,7 @@
 1. 创建模型
 2. 管理数据库架构
 
-## 创建模型
+## 知识点概要
 
 EF 框架中，将数据视为对象并负责与之进行交互的主类是 `DbContext`
 
@@ -15,9 +15,9 @@ EF 框架中，将数据视为对象并负责与之进行交互的主类是 `DbC
 
 从逻辑上讲，DBContext 映射到具有 DBContext 可理解的表的特定数据库
 
-在 DBContext 子类中，我们可以创建类型为 DbSet<T> 的属性。 泛型类型参数 T 将是一种类型的实体，如 Employee 是 HelloWorld 应用程序中的一个实体
+在 DBContext 子类中，我们可以创建类型为 DbSet<T> 的属性。 泛型类型参数 T 将是一种类型的实体
 
-### Demo中演示 
+## Demo中演示 
 
 1. 数据模型创建，Migration的初次创建，DB根据`code first`生成 (见Finally1文件夹)
     1. 创建一个`Student`数据类，然后创建对应的DBConext
