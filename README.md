@@ -13,10 +13,10 @@
         - 认证授权
             - 认证
             - 授权
-        - 数据库ORM(todo)
+        - 数据库ORM
             - 数据模型定义，初始化,创建
             - 数据库Migration
-        - WebAPI (todo)
+        - WebAPI 
             - 大文件包
                 - 上传
                 - 下载
