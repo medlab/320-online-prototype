@@ -24,9 +24,7 @@ EF 框架中，将数据视为对象并负责与之进行交互的主类是 `DbC
     2. 使用dotnet cli 生成Migration和snap,并且更新数据库
     ```bash
     dotnet ef migrations add firstMigration
-
     dotnet ef database update
-
     ```
     3. 加一个初始化DB的过程，插入一些DEMO数据,见`DbInitializer.cs`
     4. 运行（dotnet run）, 浏览 http://localhost:51674
@@ -38,9 +36,7 @@ EF 框架中，将数据视为对象并负责与之进行交互的主类是 `DbC
     2. 使用dotnet cli 生成Migration和snap,并且更新数据库
     ```bash
         dotnet ef migrations add SecondMigration
-
-    dotnet ef database update
-
+        dotnet ef database update
     ```
     3. 运行，再次查看http://localhost:51674
 
