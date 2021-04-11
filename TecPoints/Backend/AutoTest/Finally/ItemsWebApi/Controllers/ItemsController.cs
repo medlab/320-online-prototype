@@ -21,7 +21,7 @@ namespace Items.Controllers
         public IEnumerable<Item> Get()
             => _context.Set<Item>().Include(e => e.Tags).OrderBy(e => e.Name);
 
-        [HttpGet]
+        [HttpGet("{itemsName}")]
         public Item Get(string itemName)
             => _context.Set<Item>().Include(e => e.Tags).FirstOrDefault(e => e.Name == itemName);
         #endregion
