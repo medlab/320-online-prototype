@@ -25,7 +25,7 @@ gRPC 是一个由Google开源的，跨语言的，高性能的远程过程调用
 
 - 一个简单的图示例：
 </br>
-![sadf](gRPC-min.png)
+![gRPC-workflow](gRPC-min.png)
 
 - 目前GRPC主要有两种数据流模式：
     1. 最简单的调用，客户端发送一个请求，然后得到server的一个回复
@@ -159,6 +159,22 @@ message HelloReply {
         - Grpc.AspNetCore（`dotnet add package Grpc.AspNetCore`)
     - build, `dotnet build`
     - 在`Program.cs`中编写自己的逻辑,见Final中的`Program.cs`
+        - 特别针对于MacOS, 因为Kersel在Mac上用不了HTTP/2, 所以演示不能用Https,要特殊处理一下：
+        ```C#
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+             Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.ConfigureKestrel(options =>
+                    {
+                        // Setup a HTTP/2 endpoint without TLS.
+                        options.ListenLocalhost(5000, o => o.Protocols = 
+                            HttpProtocols.Http2);
+                    });
+                    webBuilder.UseStartup<Startup>();
+                });
+
+        ```
+
 
 3. 先运行Server后运行Client: 分别前后在Server和Client文件夹中运行`dotnet run`
 
