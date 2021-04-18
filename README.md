@@ -24,15 +24,17 @@
         - 中间件
             - 管道
             - 宿主
-        - 服务器路由简单演示
+        - 服务器路由
+        - GRPC
     - 工程相关
-        - 编译，打包发布，部署
+        - 编译，打包发布，部署，托管
             - 本地
             - docker
         - 测试
             - 单元测试
             - 半集成测试
             - 测试报告输出
+        - 研发手册，根据各级目录生成 (Todo)
 
 2. 前端例子
     - 功能相关
@@ -64,7 +66,6 @@
 
 ## 目录结构
 ```
-.
 ├── LICENSE
 ├── Notes
 │   └── DataFormat.md
@@ -102,6 +103,10 @@
     │   │   ├── Initial
     │   │   ├── README.md
     │   │   └── aspnetcore_dbcontext_1.png
+    │   ├── DocPro
+    │   ├── GRPC
+    │   │   ├── Finally
+    │   │   └── Initial
     │   ├── Logging
     │   │   ├── Finally
     │   │   ├── Initial
