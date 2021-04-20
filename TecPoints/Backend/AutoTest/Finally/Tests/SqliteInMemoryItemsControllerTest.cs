@@ -11,7 +11,6 @@ namespace Tests
     public class SqliteInMemoryItemsControllerTest : ItemsControllerTest, IDisposable
     {
         private readonly DbConnection _connection;
-
         public SqliteInMemoryItemsControllerTest()
             : base(
                 new DbContextOptionsBuilder<ItemsContext>()
@@ -21,7 +20,7 @@ namespace Tests
             _connection = RelationalOptionsExtension.Extract(ContextOptions).Connection;
         }
 
-        private static DbConnection CreateInMemoryDatabase()
+        public static DbConnection CreateInMemoryDatabase()
         {
             var connection = new SqliteConnection("Filename=:memory:");
 

@@ -42,7 +42,7 @@ gRPC 是一个由Google开源的，跨语言的，高性能的远程过程调用
     - Grpc.Core
     - Grpc.AspNetCore
 
-- gRPC的核心在一个叫`xx.proto`的文件，它定义了通信用的很多协议字段，例如在DEMO中（Server版）
+- gRPC的核心在一个叫`xx.proto`的文件，它定义了通信用的很多协议字段，例如在DEMO中(Server版）
 详细解释参考[GRPC RPOTO](https://grpc.io/docs/what-is-grpc/introduction/)
 ```proto
 syntax = "proto3";

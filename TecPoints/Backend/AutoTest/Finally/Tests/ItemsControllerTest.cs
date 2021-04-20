@@ -165,9 +165,9 @@ namespace Tests
         [Fact]
         public async Task Intergration_Can_get_items()
         {
-            var server = new TestServer(WebHost.CreateDefaultBuilder().UseStartup<Startup>());
+            var server = new TestServer(new WebHostBuilder().UseStartup<CustomStartup>());
             var client = server.CreateClient();
-            var url = $"/Items";
+            var url = $"/";
             var response = await client.GetAsync(url);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
