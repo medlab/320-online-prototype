@@ -43,6 +43,8 @@ Demo中创建了一个`ItemWebApi`工程和它相关的测试工程
 
 [Testing ASP.NET Core services and web apps](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/test-aspnet-core-services-web-apps)
 
+[UnitTesting With .NET Core](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test)
+
 
 
 

@@ -22,6 +22,7 @@ namespace DemoWebApi.Controllers
 
         // GET: api/TodoItems
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
         {
             return await _context.TodoItems.ToListAsync();
