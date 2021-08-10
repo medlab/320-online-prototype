@@ -8,25 +8,60 @@ Amazon S3，全名为亚马逊简易存储服务（Amazon Simple Storage Service
 使用 Docker Compose 部署简易测试环境
 
 ### 前置条件
-机器已经安装了Docker和Docker Compose
+本文假设机器已经安装了Docker和Docker Compose
 
+### 安装方案二： 使用docker-compose构建集群（此处预定义访问信息注入失败，需要手动登录9001配置)
 ```bash
 #如需要，替换成自己的目录
 mkdir minio_test
 wget -O docker-compose.yaml 'https://github.com/minio/minio/blob/master/docs/orchestration/docker-compose/docker-compose.yaml?raw=true' 
 wget -O nginx.conf 'https://github.com/minio/minio/blob/master/docs/orchestration/docker-compose/nginx.conf?raw=true'
+
+# Tips
+# 1. 为了使用AWS的SDK， 需要在docker-compose.yaml中设置MINIO_REGION环境变量， 参考 https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html
+#   如，MINIO_REGION: "us-east-1"
+# 2. 预定义 MINIO_ROOT_USER、MINIO_ROOT_PASSWORD也可以当作accessKey、secretKey使用
 docker-compose pull
+
+# 如果需要，清理旧实例， 会删除数据卷，小心， 确保你知道你在干什么
+# docker-compose down -v
+
 # 注意，终端这是不是服务模式，Ctrl C 后，服务会销毁。
 # 如需要持续运行， 使用docker-compose up -d
 docker-compose up
 
 #运行后访问 http://127.0.0.1:9001/login ， 登录后就可以管理了
-#密码可以打开docker-compose.yaml查看，默认应该是minio 、 minio123
+#密码可以打开docker-compose.yaml查看，写这个文档时是minio:minio123
+
+#另外，预定义 MINIO_ROOT_USER、MINIO_ROOT_PASSWORD也可以当作accessKey、secretKey使用
 ```
 
 ## .Net S3 API 介绍
 
 MinIO Client SDK for .NET
+
+快速示意
+```c#
+using Minio;
+
+// Initialize the client with access credentials.
+private static MinioClient minio = new MinioClient("play.min.io",
+                "Q3AM3UQ867SPQQA43P2F",
+                "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG"
+                ).WithSSL();
+
+// Create an async task for listing buckets.
+var getListBucketsTask = minio.ListBucketsAsync();
+
+// Iterate over the list of buckets.
+foreach (Bucket bucket in getListBucketsTask.Result.Buckets)
+{
+    Console.WriteLine(bucket.Name + " " + bucket.CreationDateDateTime);
+}
+
+```
+
+复杂示意
 ```C#
 using System;
 using Minio;
@@ -142,14 +177,14 @@ class Program
 ```bash
     dotnet new  blazorserver -o Initial
 ```
-### Finally
+### Finally(TODO)
     调整首页功能，可以新增文件和列出文件
 
 ## 参考：
+0. [How to use AWS SDK for .NET with MinIO Server](https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html)
 1. [Amazon S3 Wikipedia](https://zh.wikipedia.org/wiki/Amazon_S3)
 2. [Amazon S3官网](https://aws.amazon.com/cn/s3/?nc1=h_ls)
 3. [Amazon S3介绍视频](https://www.youtube.com/watch?v=_I14_sXHO8U&ab_channel=AmazonWebServices)
 4. [MINIO](https://min.io/)
 5. [MINIO安装 Docker Compose 模式](https://docs.min.io/docs/deploy-minio-on-docker-compose.html)
 6. [MinIO Client SDK for .NET](https://docs.min.io/docs/dotnet-client-quickstart-guide.html)
-7. [How to use AWS SDK for .NET with MinIO Server](https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html)
