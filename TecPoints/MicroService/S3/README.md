@@ -10,7 +10,7 @@ Amazon S3，全名为亚马逊简易存储服务（Amazon Simple Storage Service
 ### 前置条件
 本文假设机器已经安装了Docker和Docker Compose
 
-### 安装方案二： 使用docker-compose构建集群（此处预定义访问信息注入失败，需要手动登录9001配置)
+### 安装方案： 使用docker-compose构建集群（此处预定义访问信息注入失败，需要手动登录9001配置)
 ```bash
 #如需要，替换成自己的目录
 mkdir minio_test
@@ -179,6 +179,9 @@ class Program
 ```
 ### Finally(TODO)
     调整首页功能，可以新增文件和列出文件
+
+### QuickStart
+    A Full Quick Api Demo
 
 ## 参考：
 0. [How to use AWS SDK for .NET with MinIO Server](https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html)
