@@ -184,10 +184,11 @@ class Program
     A Full Quick Api Demo
 
 ## 参考：
-0. [How to use AWS SDK for .NET with MinIO Server](https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html)
-1. [Amazon S3 Wikipedia](https://zh.wikipedia.org/wiki/Amazon_S3)
-2. [Amazon S3官网](https://aws.amazon.com/cn/s3/?nc1=h_ls)
-3. [Amazon S3介绍视频](https://www.youtube.com/watch?v=_I14_sXHO8U&ab_channel=AmazonWebServices)
-4. [MINIO](https://min.io/)
-5. [MINIO安装 Docker Compose 模式](https://docs.min.io/docs/deploy-minio-on-docker-compose.html)
-6. [MinIO Client SDK for .NET](https://docs.min.io/docs/dotnet-client-quickstart-guide.html)
+0. [CEPH C# S3 EXAMPLES](https://docs.ceph.com/en/latest/radosgw/s3/csharp/)
+1. [How to use AWS SDK for .NET with MinIO Server](https://docs.min.io/docs/how-to-use-aws-sdk-for-net-with-minio-server.html)
+2. [Amazon S3 Wikipedia](https://zh.wikipedia.org/wiki/Amazon_S3)
+3. [Amazon S3官网](https://aws.amazon.com/cn/s3/?nc1=h_ls)
+4. [Amazon S3介绍视频](https://www.youtube.com/watch?v=_I14_sXHO8U&ab_channel=AmazonWebServices)
+5. [MINIO](https://min.io/)
+6. [MINIO安装 Docker Compose 模式](https://docs.min.io/docs/deploy-minio-on-docker-compose.html)
+7. [MinIO Client SDK for .NET](https://docs.min.io/docs/dotnet-client-quickstart-guide.html)
