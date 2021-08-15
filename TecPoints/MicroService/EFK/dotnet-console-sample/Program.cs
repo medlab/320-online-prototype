@@ -5,10 +5,11 @@
 using System;
 using System.Threading.Tasks;
 using Serilog;
+using Serilog.Formatting.Compact;
 
 Log.Logger = new LoggerConfiguration()
  .Enrich.WithThreadId()
- .WriteTo.Console()
+ .WriteTo.Console(new RenderedCompactJsonFormatter()) // ref: https://github.com/serilog/serilog-sinks-console
     .CreateLogger();
 
 Log.Information("--begin--");
