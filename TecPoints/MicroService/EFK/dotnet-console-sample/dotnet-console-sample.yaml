@@ -6,3 +6,5 @@ spec:
   containers:
   - name: dotnet-console-sample
     image: dotnet-console-sample
+    imagePullPolicy : Never
+    
