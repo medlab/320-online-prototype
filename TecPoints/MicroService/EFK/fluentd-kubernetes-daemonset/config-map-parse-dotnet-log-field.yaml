@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 data:
   parse-dotnet-log-field.conf: |
-    <filter kubernetes.var.log.containers.*dotnet*>
+    <filter kubernetes.var.log.containers.*dotnet**>
       @type parser
       key_name log
       reserve_time true
