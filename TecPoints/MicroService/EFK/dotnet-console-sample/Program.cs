@@ -12,6 +12,7 @@ Log.Logger = new LoggerConfiguration()
  .Enrich.WithThreadId()
   // ref: https://github.com/serilog/serilog-sinks-console
   // ref: https://github.com/serilog/serilog-sinks-elasticsearch#elasticsearch-formatters
+  // ref: https://www.cnblogs.com/jesen1315/p/11398597.html
  .WriteTo.Console(new ElasticsearchJsonFormatter()) 
     .CreateLogger();
 
