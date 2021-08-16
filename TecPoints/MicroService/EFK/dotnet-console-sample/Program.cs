@@ -6,10 +6,13 @@ using System;
 using System.Threading.Tasks;
 using Serilog;
 using Serilog.Formatting.Compact;
+using Serilog.Formatting.Elasticsearch;
 
 Log.Logger = new LoggerConfiguration()
  .Enrich.WithThreadId()
- .WriteTo.Console(new RenderedCompactJsonFormatter()) // ref: https://github.com/serilog/serilog-sinks-console
+  // ref: https://github.com/serilog/serilog-sinks-console
+  // ref: https://github.com/serilog/serilog-sinks-elasticsearch#elasticsearch-formatters
+ .WriteTo.Console(new ElasticsearchJsonFormatter()) 
     .CreateLogger();
 
 Log.Information("--begin--");
