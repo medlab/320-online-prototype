@@ -5,6 +5,9 @@
 - 首先先实现用户常用场景下的一些操作做出技术点例子，如用户注册，登陆，文件上传，下载，看教学视频，能对自己的信息进行管理等，然后在进一步做详细规划
 
 ## 技术点研究
+0. 底层技术研究
+    - async&await
+        - async await 友好的生产者消费者队列实现
 1. 后端例子
     - 功能相关
         - 日志系统
@@ -63,7 +66,9 @@
         - S3介绍(C# Interactive Notebook) 
     - EFK
         - EFK介绍(Jupyter Notebook) 
-    - OAuth(TODO)
+    - 认证和授权(TODO)
+        - JWT 结构介绍           
+        - Asp.Net Core OAuth2 客户端认证模式实战               
     - Jaeger
         - CNCF Jaeger 分布式追踪体验
 
@@ -87,6 +92,8 @@
 │   └── video
 │       └── react.md
 └── TecPoints
+    ├── Foundation
+    │   ├── AsyncProducerConsumerCollection
     ├── Backend
     │   ├── Authentication
     │   │   ├── Authen
