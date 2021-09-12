@@ -64,6 +64,8 @@
     - EFK
         - EFK介绍(Jupyter Notebook) 
     - OAuth(TODO)
+    - Jaeger
+        - CNCF Jaeger 分布式追踪体验
 
 ## WebApp原型（结合所有技术点做出的原型站点）
 - Todo 
