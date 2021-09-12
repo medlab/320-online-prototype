@@ -1,0 +1,10 @@
+## dotnet-console-sample.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dotnet-console-sample
+spec:
+  containers:
+  - name: dotnet-console-sample
+    image: dotnet-console-sample
+    imagePullPolicy : Never    
