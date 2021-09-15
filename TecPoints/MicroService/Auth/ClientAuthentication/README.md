@@ -172,12 +172,12 @@ docker-compose -f quickstart.yml exec -T hydra \
 
 # 服务器实现--通过scope验证
 
-这会涉及到API管理平台，API管理平台定义，决策权在API实现方面，可以通过scope来验证
+这会涉及到API管理平台，API管理平台定义Client和ApiScope的关联关系，API实现方面可以通过scope来验证访问合法性
 
-1. 为API起名
-2. 定义客户端和API的关系
-3. 定义API的实现方(此处我不确定)
-
+1. 管理平台为API起名
+2. 管理平台定义客户端和API的关系
+3. 管理平台为客户端颁发对应scope Claim
+4. 资源提供方通过scope验证请求合法性
 
 # 验证服务器实现：
 
