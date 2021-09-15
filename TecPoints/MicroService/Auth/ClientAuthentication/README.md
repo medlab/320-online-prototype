@@ -52,6 +52,14 @@ docker-compose -f quickstart.yml exec hydra \
     --secret secret \
     --grant-types client_credentials
 
+# 创建另一个客户端
+docker-compose -f quickstart.yml exec hydra \
+    hydra clients create \
+    --endpoint http://127.0.0.1:4445/ \
+    --id client \
+    --secret secret \
+    --grant-types client_credentials
+
 # 1. 获取一个客户端认证token
 docker-compose -f quickstart.yml exec hydra \
     hydra token client \
@@ -108,6 +116,23 @@ docker-compose -f quickstart.yml exec -T hydra \
 服务器配置：
 ```bash
 docker-compose -f quickstart.yml     -f quickstart-postgres.yml     -f quickstart-tracing.yml     -f quickstart-prometheus.yml  -f quickstart-jwt.yml    up --build
+
+# 创建一个客户端
+docker-compose -f quickstart.yml exec hydra \
+    hydra clients create \
+    --endpoint http://127.0.0.1:4445/ \
+    --id my-client \
+    --secret secret \
+    --grant-types client_credentials
+
+# 创建另一个客户端
+docker-compose -f quickstart.yml exec hydra \
+    hydra clients create \
+    --endpoint http://127.0.0.1:4445/ \
+    --id client \
+    --secret secret \
+    --grant-types client_credentials
+    
 ```
 
 Token获取以及解析：
@@ -165,8 +190,8 @@ curl -X GET "http://localhost:5000/HelloWorldApi/SayHelloSecured" -H  "accept: *
 curl -X GET "http://localhost:5000/HelloWorldApi/SayHelloSecured" -H  "accept: */*" -H  "Authorization: Bearer ${OpaqueToken}"
 
 # 3. auth by client_id api
-curl -X GET "http://localhost:5000/HelloWorldApi/SayHelloSecuredByPoliceClientIDCheck" -H  "accept: */*"
-curl -X GET "http://localhost:5000/HelloWorldApi/SayHelloSecuredByPoliceClientIDCheck" -H  "accept: */*" -H  "Authorization: Bearer ${OpaqueToken}"
+curl -X GET "http://localhost:5000/HelloWorldApi/SayHelloSecuredByClientIDCheck" -H  "accept: */*"
+curl -X GET "http://localhost:5000/HelloWorldApi/SayHelloSecuredByClientIDCheck" -H  "accept: */*" -H  "Authorization: Bearer ${OpaqueToken}"
 
 # 4. auth by scope api
 curl -X GET "http://localhost:5000/HelloWorldApi/SayHelloSecuredByApiScope" -H  "accept: */*"
