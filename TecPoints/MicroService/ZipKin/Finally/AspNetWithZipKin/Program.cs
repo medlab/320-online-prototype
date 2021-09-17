@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,13 +18,18 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddOpenTelemetryTracing(config =>
 {
+    config.SetResourceBuilder(ResourceBuilder.CreateDefault()
+        .AddService(builder.Environment.ApplicationName));
+    
+    config.AddAspNetCoreInstrumentation();
+    config.AddHttpClientInstrumentation();
+    
     config.AddZipkinExporter(o =>
     {
         o.Endpoint = new Uri("http://localhost:9411/api/v2/spans");
         //o.ServiceName 
     });
     config.AddConsoleExporter();
-    config.AddHttpClientInstrumentation();
 });
 
 
