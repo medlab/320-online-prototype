@@ -1,4 +1,9 @@
+using System;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,13 +15,16 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "AspNetWithZipKin", Version = "v1" });
 });
 
-builder.Services.AddOpenTelemetryTracing(config=>
-    config.AddZipkinExporter(object=>
+builder.Services.AddOpenTelemetryTracing(config =>
+{
+    config.AddZipkinExporter(o =>
     {
-
-    })
-    .AddZipkinHttpExporter(object=>
-    {}));   
+        o.Endpoint = new Uri("http://localhost:9411/api/v2/spans");
+        //o.ServiceName 
+    });
+    config.AddConsoleExporter();
+    config.AddHttpClientInstrumentation();
+});
 
 
 var app = builder.Build();
