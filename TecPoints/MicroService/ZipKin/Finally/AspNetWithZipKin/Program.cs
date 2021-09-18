@@ -32,7 +32,6 @@ builder.Services.AddOpenTelemetryTracing(config =>
     config.AddConsoleExporter();
 });
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
