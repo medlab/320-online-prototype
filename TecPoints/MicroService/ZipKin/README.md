@@ -2,6 +2,11 @@
 
 本文介绍了Asp.Net Core 如何通过OpenTelemetry框架实现和ZipKin的对接
 
+重要提示:
+
+    在.Net Core中ActivateSource代表Trace?
+    在.Net Core中Activate代表Span?
+
 # ZipKin准备
 
 ZipKin对部署非常友好，直接Java -jar执行或者Docker部署即可
