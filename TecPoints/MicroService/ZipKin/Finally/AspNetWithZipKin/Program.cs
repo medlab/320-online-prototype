@@ -19,11 +19,11 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddOpenTelemetryTracing(config =>
 {
     config.SetResourceBuilder(ResourceBuilder.CreateDefault()
-        .AddService(builder.Environment.ApplicationName));
-    
+        .AddService(builder.Environment.ApplicationName)
+    );
+    config.AddSource("sample"); //this for log part
     config.AddAspNetCoreInstrumentation();
     config.AddHttpClientInstrumentation();
-    
     config.AddZipkinExporter(o =>
     {
         o.Endpoint = new Uri("http://localhost:9411/api/v2/spans");
