@@ -50,6 +50,7 @@ describe('WebApi测试套件', ()=>{
         //         resolve()
         //     })
         // });
+        await delay(2000);
     })
 
     it.each([
