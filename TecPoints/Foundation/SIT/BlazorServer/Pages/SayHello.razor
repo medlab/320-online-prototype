@@ -1,0 +1,11 @@
+﻿@page "/sayhello"
+
+<label for="input">Please input your name:</label>
+<input type="text" @bind="Name" id="input" > 
+<br>
+<span id="msg">
+    Hello @Name
+</span>
+@code {
+    private string Name;
+}
