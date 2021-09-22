@@ -8,6 +8,9 @@
 0. 底层技术研究
     - async&await
         - async await 友好的生产者消费者队列实现
+    - SIT
+        - web api SIT
+        - web ui SIT
 1. 后端例子
     - 功能相关
         - 日志系统
