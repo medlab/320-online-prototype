@@ -52,6 +52,7 @@ describe('WebApi测试套件', ()=>{
         //         resolve()
         //     })
         // });
+        //TODO too bad here, try to find some more stable code to fix process(dotnet run) leak problem
         await delay(2000);
     })
 
