@@ -7,11 +7,31 @@ const assert=require('assert')
 const child_process=require('child_process')
 const axios=require('axios');
 
+const base_url='http://localhost:5100'
+
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 // # --begin-- Work Chapter
 describe('WebApi测试套件', ()=>{
 
-    beforeAll(()=>{
+    let dotnet_process;
+    
+    beforeAll(async ()=>{
         console.log('beforeAll')
+        const webapi_project_dir=path.join(path.dirname(__filename),'..','WebApi')
+        dotnet_process=child_process.spawn(
+            `dotnet run --urls ${base_url}`, {
+            cwd:webapi_project_dir,
+            shell:true,
+        })
+        // await new Promise((resolve, reject)=>{
+        //     dotnet_process.on('spawn', (code)=>{
+        //         console.log('dotnet_process.on spawn', code)
+        //         resolve()
+        //     })
+        // });
+        //TODO too bad here, try to find some more stable code
+        await delay(2000)
     })
     beforeEach(()=>{
         console.log('beforeEach')
@@ -19,17 +39,27 @@ describe('WebApi测试套件', ()=>{
     afterEach(()=>{
         console.log('afterEach')
     })
-    afterAll(()=>{
+    afterAll(async ()=>{
         console.log('afterAll')
+        //TODO find a safe way to do it
+        //dotnet_process.isRunning()&&
+        dotnet_process.kill();
+        // await new Promise((resolve, reject)=>{
+        //     dotnet_process.on('killed', (code)=>{
+        //         console.log('dotnet_process.on killed', code)
+        //         resolve()
+        //     })
+        // });
     })
 
     it.each([
         ['zhangsan','Hello zhangsan'],
         ['lisi','Hello lisi'],
         ['wangmazi','Hello wangmazi']
-        ])(' call sayhello to %s should get response %s', (name,response) => {
-        //call webapi with name=name
-        //expect response=response
+        ])(' call sayhello to %s should get response %s', async (name, response) => {
+            const result=await axios.get(`${base_url}/HelloApi/SayHello?name=${name}`);
+            console.log(`response is ${result.data}`)
+            assert.equal(result.data,response)
     });
     
     let file_path_and_size_list=[['1.txt',1]]
