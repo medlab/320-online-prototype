@@ -2,10 +2,12 @@
 // const describe, it = require('jest')
 // # --begin-- Learn Chapter
 const path=require('path')
+const oldfs=require('fs')
 const fs=require('fs/promises')
 const assert=require('assert')
 const child_process=require('child_process')
 const axios=require('axios');
+const FormData = require('form-data');
 
 const base_url='http://localhost:5100'
 
@@ -63,8 +65,28 @@ describe('WebApi测试套件', ()=>{
             assert.equal(result.data,response)
     });
     
-    let file_path_and_size_list=[['1.txt',1]]
-    it.each(file_path_and_size_list)('%s file should get Size: %s', (file_path,size)=>{
+    const test_data_dir=path.join(path.dirname(__filename),'..','TestDatas')
+    const file_names=oldfs.readdirSync(test_data_dir);
+    const file_fullpaths=file_names.map(file_name=>path.join(test_data_dir,file_name))
+    // const file_stat=await fs.stat(`${test_data_dir}/${files[0]}`);
+    // file_stat.size>0||assert.fail('file should not be zero')
+    
+    it.each(file_fullpaths)('%s file should get right file size:', async (file_path)=>{
+        const file_stat=await fs.stat(file_path);
+        const file_size=file_stat.size;
+
+        //https://github.com/axios/axios#form-data
+        let form_data=new FormData();
+        //TODO need dispose myself?
+        file_stream=oldfs.createReadStream(file_path);
+        form_data.append('file', file_stream);
+        const result=await axios.post(`${base_url}/HelloApi/UploadFile`,
+            form_data
+            ,{ headers: form_data.getHeaders() }
+            );
+
+        console.log(`response is ${result.data}`)
+        assert.equal(result.data,`Hello ${file_size}`)
     });
 })
 
