@@ -32,7 +32,7 @@
 # 6831 信息收集器
 # 16686 Web UI
 # 14268 Http 收集器
-docker run -d --name jaeger -p 6831:6831/udp -p 16686:16686 -p 14268:14268 jaegertracing/all-in-one
+docker run --rm -it --name jaeger -p 6831:6831/udp -p 16686:16686 -p 14268:14268 jaegertracing/all-in-one
 
 # 2. 运行example-hotrod示例微服务程序
 docker run --rm -it --link jaeger --env JAEGER_AGENT_HOST=jaeger --env JAEGER_AGENT_PORT=6831 -p8080-8083:8080-8083 jaegertracing/example-hotrod all -j http://127.0.0.1:16686
