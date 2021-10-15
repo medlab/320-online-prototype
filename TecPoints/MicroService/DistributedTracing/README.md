@@ -73,7 +73,7 @@ EOF
 
 # 运行spring程序
 
-export SW_AGENT_NAME=demo-application # 配置 Agent 名字。一般来说，我们直接使用 Spring Boot 项目的 `spring.application.name` 。
+export SW_AGENT_NAME=spring-boot-demo-application # 配置 Agent 名字。一般来说，我们直接使用 Spring Boot 项目的 `spring.application.name` 。
 export SW_AGENT_COLLECTOR_BACKEND_SERVICES=127.0.0.1:11800 # 配置 Collector 地址。
 export SW_AGENT_SPAN_LIMIT=2000 # 配置链路的最大 Span 数量。一般情况下，不需要配置，默认为 300 。主要考虑，有些新上 SkyWalking Agent 的项目，代码可能比较糟糕。
 export JAVA_AGENT="-javaagent:$PWD/skywalking/agent/skywalking-agent.jar" # SkyWalking Agent jar 地址。
@@ -89,6 +89,53 @@ EOF
 3. https://github.com/apache/skywalking/issues/7848
 
 ## Nodejs 程序
+
+快速创建
+```bash
+mkdir nodejs
+cd nodejs
+
+npm install --save skywalking-backend-js express
+
+cat > main.mjs <<'EOF'
+
+import agent from 'skywalking-backend-js';
+
+// //provide arguments if needed
+agent.default.start();
+//agent.start();
+
+console.log({'agent':agent});
+
+import express from 'express';
+const app=express();
+const port=9083
+
+app.get('/', (req, res)=>{
+	res.send('Hello World From Node Express');
+})
+
+app.listen(port, ()=>{
+	console.log(`Example app listening at http://localhost:${port}`)
+})
+
+EOF
+
+
+export SW_AGENT_NAME=nodejs-demo-application # 配置 Agent 名字。一般来说，我们直接使用 Spring Boot 项目的 `spring.application.name` 。
+export SW_AGENT_COLLECTOR_BACKEND_SERVICES=127.0.0.1:11800 # 配置 Collector 地址。
+export SW_AGENT_SPAN_LIMIT=2000 # 配置链路的最大 Span 数量。一般情况下，不需要配置，默认为 300 。主要考虑，有些新上 SkyWalking Agent 的项目，代码可能比较糟糕。
+
+node main.mjs
+
+```
+
+
+
+### 参考
+1. https://github.com/apache/skywalking-nodejs
+2. https://expressjs.com/en/starter/installing.html
+3. https://expressjs.com/en/starter/hello-world.html
 
 ## Asp.Net Core 程序
 
