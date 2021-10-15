@@ -121,7 +121,6 @@ app.listen(port, ()=>{
 
 EOF
 
-
 export SW_AGENT_NAME=nodejs-demo-application # 配置 Agent 名字。一般来说，我们直接使用 Spring Boot 项目的 `spring.application.name` 。
 export SW_AGENT_COLLECTOR_BACKEND_SERVICES=127.0.0.1:11800 # 配置 Collector 地址。
 export SW_AGENT_SPAN_LIMIT=2000 # 配置链路的最大 Span 数量。一般情况下，不需要配置，默认为 300 。主要考虑，有些新上 SkyWalking Agent 的项目，代码可能比较糟糕。
@@ -131,13 +130,30 @@ node main.mjs
 ```
 
 
-
 ### 参考
 1. https://github.com/apache/skywalking-nodejs
 2. https://expressjs.com/en/starter/installing.html
 3. https://expressjs.com/en/starter/hello-world.html
 
 ## Asp.Net Core 程序
+
+```bash
+mkdir dotnet
+cd dotnet
+dotnet new webapi 
+dotnet add package SkyAPM.Agent.AspNetCore
+export ASPNETCORE_HOSTINGSTARTUPASSEMBLIES=SkyAPM.Agent.AspNetCore
+export SKYWALKING__SERVICENAME=dotnet-demo-application
+
+#export ASPNETCORE_ENVIRONMENT=Development
+#export ASPNETCORE_URLS=http://localhost:9082
+
+dotnet run --urls http://127.0.0.1:9082
+
+```
+
+### 参考
+1. https://github.com/SkyAPM/SkyAPM-dotnet
 
 # 效果和演示
 
