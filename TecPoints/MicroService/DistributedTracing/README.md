@@ -41,13 +41,25 @@ docker run --link oap  --name skywalking-ui  --rm -it  -e SW_OAP_ADDRESS=http://
 
 ## Spring Boot 程序
 
+
 ```bash
+
+# ###########################--begin-- skywalking ##########################
 # 获取skywalking, 不知道怎么取，直接从官方镜像里面复制吧
 docker pull ghcr.io/apache/skywalking-java/jdk-8:latest
 # 复制镜像内容到本地
 #docker run -it -v $PWD:/data --rm ghcr.io/apache/skywalking-java/jdk-8:latest cp -r /skywalking /data
 docker run -i --rm ghcr.io/apache/skywalking-java/jdk-8:latest tar c /skywalking | tar xvf -
+# ###########################--end-- skywalking   ##########################
 
+# ###########################--begin-- os adjust ##########################
+# do if if needed
+# use java 11 or skywalking will throw exception
+update-alternatives --config javac # choose something like java 11
+#update-alternatives --config java # choose something like java 11
+# ###########################--end-- os adjust. ##########################
+
+# ###########################--begin-- prepare spring boot##########################
 #create a basic project from https://start.spring.io/ , remeber add Dependencies of Spring Web, or from cmdline
 # TODO how to do this in one line?
 curl https://start.spring.io/starter.zip -d dependencies=web,devtools -d bootVersion=2.5.5.RELEASE -o demo.zip ; unzip demo.zip ; rm demo.zip
@@ -65,12 +77,16 @@ public class HelloController {
 
 	@GetMapping("/")
 	public String index() {
-		return "Greetings from Spring Boot!";
+		//return "Greetings from Spring Boot!";
+		return "springboot respose:\n '" + new RestTemplate().getForObject("http://127.0.0.1:9082", String.class)+'\'';
 	}
 
 }
 EOF
 
+# ###########################--end-- prepare spring boot ##########################
+
+# ###########################--end-- run spring boot ##########################
 # 运行spring程序
 
 export SW_AGENT_NAME=spring-boot-demo-application # 配置 Agent 名字。一般来说，我们直接使用 Spring Boot 项目的 `spring.application.name` 。
@@ -81,7 +97,8 @@ export SERVER_PORT=9081
 
 ./mvnw spring-boot:run  -Dspring-boot.run.jvmArguments="$JAVA_AGENT"
 
-EOF
+# ###########################--end-- run spring boot ##########################
+
 ```
 ### 参考
 1. https://spring.io/guides/gs/serving-web-content/
@@ -112,7 +129,7 @@ const app=express();
 const port=9083
 
 app.get('/', (req, res)=>{
-	res.send('Hello World From Node Express');
+	res.send('nodejs response: hello world!');
 })
 
 app.listen(port, ()=>{
@@ -141,6 +158,42 @@ node main.mjs
 mkdir dotnet
 cd dotnet
 dotnet new webapi 
+
+cat > Program.cs <<EOF
+using System.Net.Http;using Microsoft.OpenApi.Models;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "dotnet", Version = "v1" });
+});
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "dotnet v1"));
+}
+
+//app.UseHttpsRedirection();
+
+//app.UseAuthorization();
+
+app.MapControllers();
+
+//app.MapGet("/", () => "Hello World From DotNet!");
+app.MapGet("/", async () => "dotnet response:\n '"+await new HttpClient().GetStringAsync("http://127.0.0.1:9083")+'\'');
+
+app.Run();
+
+EOF
+
 dotnet add package SkyAPM.Agent.AspNetCore
 export ASPNETCORE_HOSTINGSTARTUPASSEMBLIES=SkyAPM.Agent.AspNetCore
 export SKYWALKING__SERVICENAME=dotnet-demo-application
