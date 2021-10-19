@@ -209,4 +209,8 @@ dotnet run --urls http://127.0.0.1:9082
 1. https://github.com/SkyAPM/SkyAPM-dotnet
 
 # 效果和演示
+1. [示意图](MultiFrameworkWithSkyWalking/results/SkyWalking.pdf)
+2. [示意图](MultiFrameworkWithSkyWalking/results/SkyWalking.png) ![示意图](MultiFrameworkWithSkyWalking/results/SkyWalking.png)
 
+# TODO
+1. 未来实现OpenTelemetry和Skywlking对接 https://github.com/apache/skywalking/issues/7848

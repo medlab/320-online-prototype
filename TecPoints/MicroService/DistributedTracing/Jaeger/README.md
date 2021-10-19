@@ -47,9 +47,9 @@ docker run --rm -it --link jaeger --env JAEGER_AGENT_HOST=jaeger --env JAEGER_AG
 
 ## 分析示意图
 
-1. (组件关系图-力导向图)[System Architecture-DAG.pdf]
-2. (组件关系图-有向无环图)[System Architecture-Force Directed Graph.pdf]
-3. (链路分析)[./trace_demo.png]
+1. [组件关系图-力导向图]( System%20Architecture-DAG.pdf)
+2. [组件关系图-有向无环图]( System%20Architecture-Force%20Directed%20Graph.pdf)
+3. [链路分析](./trace_demo.png) ![链路分析](./trace_demo.png)
 
 # 参考
 0. https://research.google/pubs/pub36356/
