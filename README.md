@@ -72,9 +72,10 @@
     - 认证和授权(TODO)
         - JWT 结构介绍           
         - Asp.Net Core OAuth2 客户端认证模式实战               
-    - Jaeger
-        - CNCF Jaeger 分布式追踪体验
-
+    - 分布式追踪
+        - Jaeger 分布式追踪体验
+        - ZipKin 分布式追踪体验
+        - 异构分布式追踪对接演示
 ## WebApp原型（结合所有技术点做出的原型站点）
 - Todo 
 

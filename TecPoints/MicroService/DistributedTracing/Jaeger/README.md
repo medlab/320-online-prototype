@@ -32,10 +32,10 @@
 # 6831 信息收集器
 # 16686 Web UI
 # 14268 Http 收集器
-docker run -d --name jaeger -p 6831:6831/udp -p 16686:16686 -p 14268:14268 jaegertracing/all-in-one
+docker run --rm -it --name jaeger -p 6831:6831/udp -p 16686:16686 -p 14268:14268 jaegertracing/all-in-one
 
 # 2. 运行example-hotrod示例微服务程序
-docker run   --rm   --link jaeger   --env JAEGER_AGENT_HOST=jaeger   --env JAEGER_AGENT_PORT=6831   -p8080-8083:8080-8083   jaegertracing/example-hotrod:   all -j http://127.0.0.1:16686
+docker run --rm -it --link jaeger --env JAEGER_AGENT_HOST=jaeger --env JAEGER_AGENT_PORT=6831 -p8080-8083:8080-8083 jaegertracing/example-hotrod all -j http://127.0.0.1:16686
 
 # 3. 操作并分析
 # 3.1 打开http://127.0.0.1:8080
@@ -47,9 +47,9 @@ docker run   --rm   --link jaeger   --env JAEGER_AGENT_HOST=jaeger   --env JAEGE
 
 ## 分析示意图
 
-1. (组件关系图-力导向图)[System Architecture-DAG.pdf]
-2. (组件关系图-有向无环图)[System Architecture-Force Directed Graph.pdf]
-3. (链路分析)[./trace_demo.png]
+1. [组件关系图-力导向图]( System%20Architecture-DAG.pdf)
+2. [组件关系图-有向无环图]( System%20Architecture-Force%20Directed%20Graph.pdf)
+3. [链路分析](./trace_demo.png) ![链路分析](./trace_demo.png)
 
 # 参考
 0. https://research.google/pubs/pub36356/
