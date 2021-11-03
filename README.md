@@ -65,6 +65,8 @@
         - babel  TODO
         - webpack 设置
 3.  微服务架构组件
+    - K8S
+        - K8S 初体验
     - S3
         - S3介绍(C# Interactive Notebook) 
     - EFK
