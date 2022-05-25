@@ -1,6 +1,6 @@
 # 轻量级Web服务SIT测试方案:
 
-1. 输入: 批量准备输入
+1. 输入: 准备批量输入
 
 2. 测试系统： WebService 系统
 
@@ -8,6 +8,21 @@
         
         a. 由测试自己发起、清理，如后续的C#代码所示
         b. 由测试发起方准备、清理
+        
+4. 测试编写
+```c#
+// 如果需要，改造成数据驱动方式，报表更优雅
+foreach(var data in testDataDirs){
+// 1. prepare input&expected
+// 2. call system
+// 3. do assert
+}
+```
+
+5. 测试执行(以mstest2为例)
+```bash
+dotnet test 
+```
 
 # 测试运行(调度方负责服务启动和停止)
 
@@ -34,21 +49,6 @@ dotnet test $test_data_dir --test-report abx.html
 
 docker stop $docker_name
 docker rm $docker_name
-```
-
-4. 测试编写
-```c#
-// 如果需要，改造成数据驱动方式，报表更优雅
-foreach(var data in testDataDirs){
-// 1. prepare input&expected
-// 2. call system
-// 3. do assert
-}
-```
-
-5. 测试执行(以mstest2为例)
-```bash
-dotnet test 
 ```
 
 # 测试运行(测试自己负责服务启动和停止)
@@ -167,7 +167,8 @@ dotnet test
 
 ```bash
 #TBD: like dotnet add package Microsoft.EntityFrameworkCore
-``` 
+```
+
 # 参考
 1. https://www.meziantou.net/mstest-v2-test-lifecycle-attributes.htm
 2. https://www.meziantou.net/mstest-v2-data-tests.htm
